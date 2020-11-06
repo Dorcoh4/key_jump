@@ -4,12 +4,13 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
     public Rigidbody2D p1;
     public float moveInput;
+    public List<KeyPickup.KeyItem> keys = new List<KeyPickup.KeyItem>();
     void Start()
     {
         speed = 10;
