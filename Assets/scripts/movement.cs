@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.scripts.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -10,7 +11,7 @@ public class Movement : MonoBehaviour
     public float speed;
     public Rigidbody2D p1;
     public float moveInput;
-    public List<KeyPickup.KeyItem> keys = new List<KeyPickup.KeyItem>();
+    public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(3);
     void Start()
     {
         speed = 10;

@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: topFloor
       value: 
       objectReference: {fileID: 104612961}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: redKeyPrefab
+      value: 
+      objectReference: {fileID: 5922273040950709651, guid: 9519002879ae86b4199576480c41c254, type: 3}
     - target: {fileID: 5851547811776445524, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.7

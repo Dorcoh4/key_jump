@@ -13,7 +13,7 @@ public class KeyPickup : MonoBehaviour
         Movement p1 = collsion.GetComponent<Movement>();
         if (p1 != null)
         {
-            p1.keys.Add(new KeyItem());
+            p1.keys.Enqueue(new KeyItem());
             Debug.Log("got a key!!!");
         }
         Destroy(gameObject);

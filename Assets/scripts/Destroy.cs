@@ -9,6 +9,7 @@ public class Destroy : MonoBehaviour
     public GameObject bigJumpFloorPrefab;
     public GameObject extraFloorPrefab;
     public GameObject topFloor;
+    public GameObject redKeyPrefab;
     private List<Vector2> previousList = new List<Vector2>();
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class Destroy : MonoBehaviour
         GameObject prefabToCreate;
         int dice = Random.Range(1, 6);
         bool noOverlap = false;
+        keyGeneration();
         if (dice == 1)
         {
             prefabToCreate = bigJumpFloorPrefab;
@@ -88,5 +90,20 @@ public class Destroy : MonoBehaviour
         //floor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
         //Destroy(collision.gameObject);
         //if (previousList.Count > 1) previousList.Remove(previousList[0]);
+    }
+    private void keyGeneration()
+    {
+        int dice = Random.Range(1, 6);
+        if (dice == 1)
+        {
+            Debug.Log("dice say yes key pleasey");
+            var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y +  13* Random.Range(0.5f, 1f));
+            var newKey = (GameObject)Instantiate(redKeyPrefab, newLocation, Quaternion.identity);
+            Debug.Log("key created!!!!");
+        }
+        else
+        {
+            Debug.Log("dice say no key");
+        }
     }
 }

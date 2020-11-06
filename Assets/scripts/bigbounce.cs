@@ -22,16 +22,16 @@ public class bigbounce : bounce
         if (!doorOpen)
         {
             Movement p1 = collision.gameObject.GetComponent<Movement>();
-            if (p1 != null && p1.keys.Count == 0)
+            if (p1 != null && p1.keys.Count() == 0)
             {
                 Rigidbody2D playerBody = collision.gameObject.GetComponent<Rigidbody2D>();
-                playerBody.velocity = new Vector2(playerBody.velocity.y, 0); ;
+                playerBody.velocity = new Vector2(playerBody.velocity.y, 0);
                 playerBody.AddForce(Vector3.down * 100);
                 Debug.Log("no key :(");
             }
             else
             {
-                p1.keys.RemoveAt(0);
+                p1.keys.Dequeue();
                 doorOpen = true;
             }
 
