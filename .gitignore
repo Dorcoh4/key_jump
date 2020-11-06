@@ -1,2 +1,7 @@
 Temp/*
 Library/*
+.v/*
+.vs/*
+Logs/*
+obj/*
+Packages/*
