@@ -22,21 +22,7 @@ public class bounce : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * getJumpFactor());
-        }
-        else
-        {
-            underEffect(collision);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpFactor);
         }
     }
-
-    protected float getJumpFactor()
-    {
-        return jumpFactor;
-    }
-    virtual protected void underEffect(Collision2D collision)
-    {
-        //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * 250);
-    }
-
 }

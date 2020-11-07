@@ -1,35 +1,38 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Assets.scripts.Utils
 {
     public class FixedSizedQueue<T>
     {
-        ConcurrentQueue<T> q = new ConcurrentQueue<T>();
-        private object lockObject = new object();
+        public List<T> list;
         public FixedSizedQueue(int size)
         {
             Limit = size;
         }
         public int Limit { get; set; }
-        public void Enqueue(T obj)
+        public void Add(T obj)
         {
-            q.Enqueue(obj);
-            lock (lockObject)
+            list.Add(obj);
+            if (list.Count == Limit)
             {
-                T overflow;
-                while (q.Count > Limit && q.TryDequeue(out overflow)) ;
+                list.RemoveAt(0);
             }
+            
         }
-        public void Dequeue()
+        public void Remove(T toRemove)
         {
-            q.TryDequeue(out T _);
+            list.Remove(toRemove);
         }
 
-        public int Count()
+        public T this[int i]
         {
-            return q.Count;
+            get => list[i];
         }
+
+        public int Count { get => list.Count; }
     }
 }

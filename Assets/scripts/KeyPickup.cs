@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class KeyPickup : MonoBehaviour
 {
+    private KeyColor color;
     public class KeyItem{
-
+        public KeyColor Color { get; set; }
+        public KeyItem(KeyColor color)
+        {
+            Color = color;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collsion)
@@ -13,7 +18,7 @@ public class KeyPickup : MonoBehaviour
         Movement p1 = collsion.GetComponent<Movement>();
         if (p1 != null)
         {
-            p1.keys.Enqueue(new KeyItem());
+            p1.keys.Enqueue(new KeyItem(color));
             Debug.Log("got a key!!!");
         }
         Destroy(gameObject);
@@ -29,5 +34,11 @@ public class KeyPickup : MonoBehaviour
     void Update()
     {
         
+    }
+    public enum KeyColor
+    {
+        NONE,
+        RED,
+        BLUE
     }
 }
