@@ -4,12 +4,13 @@ using UnityEngine;
 public class DoorBlocker : MonoBehaviour
 {
     private bool doorOpen = false;
+    public string ColorString;
     public KeyPickup.KeyColor keyColor;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //keyColor = KeyPickup.StringToColor(ColorString);
     }
 
     // Update is called once per frame

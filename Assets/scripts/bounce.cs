@@ -20,9 +20,15 @@ public class bounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+        
+        if ( collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpFactor);
+            //Debug.Log("something touched me from above");
+        }
+        else
+        {
+            //Debug.Log("something touched me from below");
         }
     }
 }

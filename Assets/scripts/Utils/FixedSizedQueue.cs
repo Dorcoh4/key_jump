@@ -3,12 +3,13 @@ using UnityEditor;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using System.Collections;
 
 namespace Assets.scripts.Utils
 {
     public class FixedSizedQueue<T>
     {
-        public List<T> list;
+        public List<T> list = new List<T>();
         public FixedSizedQueue(int size)
         {
             Limit = size;
@@ -17,7 +18,7 @@ namespace Assets.scripts.Utils
         public void Add(T obj)
         {
             list.Add(obj);
-            if (list.Count == Limit)
+            if (list.Count > Limit)
             {
                 list.RemoveAt(0);
             }

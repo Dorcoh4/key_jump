@@ -7,9 +7,10 @@ public class Destroy : MonoBehaviour
     public GameObject p1;
     public GameObject floorPrefab;
     public GameObject bigJumpFloorPrefab;
-    public GameObject extraFloorPrefab;
+    public GameObject blueFloorPrefab;
     public GameObject topFloor;
     public GameObject redKeyPrefab;
+    public GameObject blueKeyPrefab;
     private List<Vector2> previousList = new List<Vector2>();
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,10 @@ public class Destroy : MonoBehaviour
         {
             prefabToCreate = bigJumpFloorPrefab;
         }
-        //else if (dice == 2)
-        //{
-        //    prefabToCreate = extraFloorPrefab;
-        //}
+        else if (dice == 2)
+        {
+            prefabToCreate = blueFloorPrefab;
+        }
         else
         {
             prefabToCreate = floorPrefab;
@@ -45,14 +46,14 @@ public class Destroy : MonoBehaviour
         //var newYLocation = p1.transform.position.y + (15);
         //if (floor != null && newYLocation - floor.transform.position.y < 7 )
         //{
-            var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
+        var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
         //}
 
         var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), newYLocation);
 
         bool moveFloor = false;
 
-        if ((collision.gameObject.name.StartsWith("floor") && prefabToCreate.Equals(floorPrefab)) ||(collision.gameObject.name.StartsWith("red floor") && prefabToCreate.Equals(bigJumpFloorPrefab)))
+        if ((collision.gameObject.name.StartsWith("floor") && prefabToCreate.Equals(floorPrefab)) || (collision.gameObject.name.StartsWith("red floor") && prefabToCreate.Equals(bigJumpFloorPrefab)) || (collision.gameObject.name.StartsWith("blue floor") && prefabToCreate.Equals(blueFloorPrefab)))
         {
             moveFloor = true;
         }
@@ -94,16 +95,28 @@ public class Destroy : MonoBehaviour
     private void keyGeneration()
     {
         int dice = Random.Range(1, 6);
+        GameObject prefabToCreate = null;
         if (dice == 1)
         {
-            Debug.Log("dice say yes key pleasey");
-            var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y +  13* Random.Range(0.5f, 1f));
-            var newKey = (GameObject)Instantiate(redKeyPrefab, newLocation, Quaternion.identity);
-            Debug.Log("key created!!!!");
+            prefabToCreate = redKeyPrefab;
+            //Debug.Log("dice say yes key pleasey");
+            
+            //Debug.Log("key created!!!!");
+        }
+        else if (dice == 2)
+        {
+            prefabToCreate = blueKeyPrefab;
         }
         else
         {
-            Debug.Log("dice say no key");
+            //Debug.Log("dice say no key");
         }
+        if (prefabToCreate != null)
+        {
+            var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y + 13 * Random.Range(0.5f, 1f));
+            var newKey = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
+        }
+        
     }
+    //private checkIdentityBadly(string )
 }
