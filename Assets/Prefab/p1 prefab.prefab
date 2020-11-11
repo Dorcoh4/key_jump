@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5851547811752230956}
   - component: {fileID: 5851547811752230958}
   - component: {fileID: 5851547811752230957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: THEDESTROYER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +72,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1: {fileID: 0}
   floorPrefab: {fileID: 0}
+  bigJumpFloorPrefab: {fileID: 0}
+  blueFloorPrefab: {fileID: 0}
+  topFloor: {fileID: 0}
+  redKeyPrefab: {fileID: 0}
+  blueKeyPrefab: {fileID: 0}
 --- !u!1 &9006024381364168447
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,8 +91,8 @@ GameObject:
   - component: {fileID: 5851547811063067424}
   - component: {fileID: 5851547811063067451}
   - component: {fileID: 5851547811063067430}
-  m_Layer: 0
-  m_Name: p1
+  m_Layer: 8
+  m_Name: p1 prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,6 +226,7 @@ MonoBehaviour:
   speed: 0
   p1: {fileID: 0}
   moveInput: 0
+  Canvas: {fileID: 0}
 --- !u!114 &5851547811063067430
 MonoBehaviour:
   m_ObjectHideFlags: 0
