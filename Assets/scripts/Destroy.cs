@@ -49,7 +49,7 @@ public class Destroy : MonoBehaviour
         var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
         //}
 
-        var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), newYLocation);
+        var newLocation = new Vector2(Random.Range(-8.5f, 8.5f), newYLocation);
 
         bool moveFloor = false;
 

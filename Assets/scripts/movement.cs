@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public float speed;
     public Rigidbody2D p1;
     public float moveInput;
-    public static readonly int maxKeys = 3;
+    public static readonly int maxKeys = 10;
     public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(maxKeys);
     public GameObject Canvas;
     void Start()
@@ -45,6 +45,15 @@ public class Movement : MonoBehaviour
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");
         if (moveInput > 0 ) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.RED));
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.BLUE));
+        }
     }
     private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int blueCount, out int redCount)
     {

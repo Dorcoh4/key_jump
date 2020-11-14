@@ -6,6 +6,8 @@ public class DoorBlocker : MonoBehaviour
     private bool doorOpen = false;
     public string ColorString;
     public KeyPickup.KeyColor keyColor;
+    public static readonly float START_MOMENTUM = 0.8f;
+    public static float Momentum = START_MOMENTUM;
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +33,18 @@ public class DoorBlocker : MonoBehaviour
                     KeyPickup.KeyItem correctKey = GetCorrectKey(p1.keys);
                     if (correctKey == null)
                     {
-                        Rigidbody2D playerBody = collision.gameObject.GetComponent<Rigidbody2D>();
-                        playerBody.velocity = new Vector2(playerBody.velocity.y, 0);
-                        playerBody.AddForce(Vector3.down * 100);
+                        //Rigidbody2D playerBody = collision.gameObject.GetComponent<Rigidbody2D>();
+                        //playerBody.velocity = new Vector2(playerBody.velocity.y, 0);
+                        //playerBody.AddForce(Vector3.down * 100);
+                        Momentum = START_MOMENTUM;
                         Debug.Log("no key :(");
                     }
                     else
                     {
                         p1.keys.Remove(correctKey);
                         doorOpen = true;
+                        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * Momentum);
+                        Momentum += 0.1f;
                     }
                 }
 

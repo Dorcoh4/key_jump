@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class bigbounce : bounce
 {
-    private readonly float DEFAULT_JUMP = 750;
+    private readonly float DEFAULT_JUMP = 550;
     public float downBounce;
     private bool doorOpen = false;
     void Start()
