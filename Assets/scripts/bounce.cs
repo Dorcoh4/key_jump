@@ -5,7 +5,7 @@ using UnityEngine;
 public class bounce : MonoBehaviour
 {
     public float jumpFactor;
-    private readonly float DEFAULT_JUMP = 550;
+    private readonly float DEFAULT_JUMP = 1000;
     // Start is called before the first frame update
     void Start()
     {

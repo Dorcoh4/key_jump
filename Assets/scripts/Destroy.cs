@@ -49,7 +49,7 @@ public class Destroy : MonoBehaviour
         var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
         //}
 
-        var newLocation = new Vector2(Random.Range(-8.5f, 8.5f), newYLocation);
+        var newLocation = new Vector2(Random.Range(-9.0f, 9.0f), newYLocation);
 
         bool moveFloor = false;
 
@@ -94,7 +94,7 @@ public class Destroy : MonoBehaviour
     }
     private void keyGeneration()
     {
-        int dice = Random.Range(1, 6);
+        int dice = Random.Range(1, 10);
         GameObject prefabToCreate = null;
         if (dice == 1)
         {
