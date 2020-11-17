@@ -53,7 +53,7 @@ public class Destroy : MonoBehaviour
 
         bool moveFloor = false;
 
-        if ((collision.gameObject.name.StartsWith("floor") && prefabToCreate.Equals(floorPrefab)) || (collision.gameObject.name.StartsWith("red floor") && prefabToCreate.Equals(bigJumpFloorPrefab)) || (collision.gameObject.name.StartsWith("blue floor") && prefabToCreate.Equals(blueFloorPrefab)))
+        if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab)
         {
             moveFloor = true;
         }
@@ -118,5 +118,8 @@ public class Destroy : MonoBehaviour
         }
         
     }
-    //private checkIdentityBadly(string )
+    private bool checkIdentityBadly(string prefabName, Collider2D collision, GameObject prefabToCreate, GameObject floorPrefab)
+    {
+        return collision.gameObject.name.StartsWith(prefabName) && prefabToCreate.Equals(floorPrefab);
+    }
 }
