@@ -8,9 +8,11 @@ public class Destroy : MonoBehaviour
     public GameObject floorPrefab;
     public GameObject bigJumpFloorPrefab;
     public GameObject blueFloorPrefab;
+    public GameObject yellowFloorPrefab;
     public GameObject topFloor;
     public GameObject redKeyPrefab;
     public GameObject blueKeyPrefab;
+    public GameObject yellowKeyPrefab;
     private List<Vector2> previousList = new List<Vector2>();
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,10 @@ public class Destroy : MonoBehaviour
         {
             prefabToCreate = blueFloorPrefab;
         }
+        else if (dice == 3)
+        {
+            prefabToCreate = yellowFloorPrefab;
+        }
         else
         {
             prefabToCreate = floorPrefab;
@@ -53,7 +59,7 @@ public class Destroy : MonoBehaviour
 
         bool moveFloor = false;
 
-        if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab)
+        if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab) || checkIdentityBadly("yellow floor", collision, prefabToCreate, yellowFloorPrefab))
         {
             moveFloor = true;
         }
@@ -106,6 +112,10 @@ public class Destroy : MonoBehaviour
         else if (dice == 2)
         {
             prefabToCreate = blueKeyPrefab;
+        }
+        else if (dice == 3)
+        {
+            prefabToCreate = yellowKeyPrefab;
         }
         else
         {

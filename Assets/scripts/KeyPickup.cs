@@ -58,6 +58,7 @@ public class KeyPickup : MonoBehaviour
     {
         NONE,
         RED,
-        BLUE
+        BLUE,
+        YELLOW
     }
 }

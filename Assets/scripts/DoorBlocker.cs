@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorBlocker : MonoBehaviour
 {
-    private bool doorOpen = false;
+    protected bool doorOpen = false;
     public string ColorString;
     public KeyPickup.KeyColor keyColor;
     public static readonly float START_MOMENTUM = 0.8f;
@@ -38,7 +38,7 @@ public class DoorBlocker : MonoBehaviour
                         //Rigidbody2D playerBody = collision.gameObject.GetComponent<Rigidbody2D>();
                         //playerBody.velocity = new Vector2(playerBody.velocity.y, 0);
                         //playerBody.AddForce(Vector3.down * 100);
-                        
+
                         Momentum = START_MOMENTUM;
                         Rigidbody2D bouncer = collision.gameObject.GetComponent<Rigidbody2D>();
                         //bouncer.AddForce(Vector3.down * this.gameObject.GetComponent<bounce>().jumpFactor * 0.025f * Momentum * (float)Math.Pow( bouncer.velocity.y, 2));
@@ -46,18 +46,23 @@ public class DoorBlocker : MonoBehaviour
                         Debug.Log("no key :(");
                     }
                     else
+                        ActivateKey(collision, p1, correctKey);
                     {
-                        p1.keys.Remove(correctKey);
-                        doorOpen = true;
-                        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * Momentum);
-                        if (Momentum < TOP_MOMENTUM)
-                        {
-                            Momentum += 0.05f;
-                        }
                     }
                 }
 
             }
+        }
+    }
+
+    protected virtual void ActivateKey(Collision2D collision, Movement p1, KeyPickup.KeyItem correctKey)
+    {
+        p1.keys.Remove(correctKey);
+        doorOpen = true;
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * Momentum);
+        if (Momentum < TOP_MOMENTUM)
+        {
+            Momentum += 0.05f;
         }
     }
 

@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     public float speed;
     public Rigidbody2D p1;
     public float moveInput;
-    public static readonly int maxKeys = 1;
+    public static readonly int maxKeys = 4;
     public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(maxKeys);
     public GameObject Canvas;
     private int timer = 0;
@@ -49,8 +49,8 @@ public class Movement : MonoBehaviour
 
 
 
-        CountKeys(this.keys, out int blueCount, out int redCount);
-        Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyour mom: 69";
+        CountKeys(this.keys, out int blueCount, out int redCount, out int yellowCount);
+        Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
         moveInput = Input.GetAxis("Horizontal");
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         if (timer == 0)
@@ -96,11 +96,16 @@ public class Movement : MonoBehaviour
         {
             this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.BLUE));
         }
+        if (Input.GetKey(KeyCode.R))
+        {
+            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.YELLOW));
+        }
     }
-    private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int blueCount, out int redCount)
+    private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int blueCount, out int redCount, out int yellowCount)
     {
         blueCount = 0;
         redCount = 0;
+        yellowCount = 0;
         for (int i = 0; i < keys.Count; i++)
         {
             var key = keys[i];
@@ -111,6 +116,9 @@ public class Movement : MonoBehaviour
                     break;
                 case KeyPickup.KeyColor.RED:
                     redCount++;
+                    break;
+                case KeyPickup.KeyColor.YELLOW:
+                    yellowCount++;
                     break;
             }
         }
