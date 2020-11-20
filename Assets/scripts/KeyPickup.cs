@@ -16,21 +16,21 @@ public class KeyPickup : MonoBehaviour
         }
     }
 
-    public static KeyColor StringToColor(string colorString)
-    {
-        switch (colorString.ToLower())
-        {
-            case "red":
-                return KeyColor.RED;
-                break;
-            case "blue":
-                return KeyColor.BLUE;
-                    break;
-            default:
-                Debug.Log("bad key color string - " + colorString);
-                return KeyColor.NONE;
-        }
-    }
+    //public static KeyColor StringToColor(string colorString)
+    //{
+    //    switch (colorString.ToLower())
+    //    {
+    //        case "red":
+    //            return KeyColor.RED;
+    //            break;
+    //        case "blue":
+    //            return KeyColor.BLUE;
+    //                break;
+    //        default:
+    //            Debug.Log("bad key color string - " + colorString);
+    //            return KeyColor.NONE;
+    //    }
+    //}
 
     public void OnTriggerEnter2D(Collider2D collsion)
     {
@@ -56,9 +56,9 @@ public class KeyPickup : MonoBehaviour
     }
     public enum KeyColor
     {
-        NONE,
         RED,
         BLUE,
-        YELLOW
+        YELLOW,
+        NONE
     }
 }

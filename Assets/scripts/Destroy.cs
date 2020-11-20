@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.scripts.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class Destroy : MonoBehaviour
     public GameObject blueFloorPrefab;
     public GameObject yellowFloorPrefab;
     public GameObject topFloor;
+    public GameObject[] coloredFloorPrefabs;
+    public GameObject[] keyPrefabs;
     public GameObject redKeyPrefab;
     public GameObject blueKeyPrefab;
     public GameObject yellowKeyPrefab;
@@ -24,25 +27,10 @@ public class Destroy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject prefabToCreate;
-        int dice = Random.Range(1, 6);
+        int dice = Random.Range(0, 5);
         bool noOverlap = false;
         keyGeneration();
-        if (dice == 1)
-        {
-            prefabToCreate = bigJumpFloorPrefab;
-        }
-        else if (dice == 2)
-        {
-            prefabToCreate = blueFloorPrefab;
-        }
-        else if (dice == 3)
-        {
-            prefabToCreate = yellowFloorPrefab;
-        }
-        else
-        {
-            prefabToCreate = floorPrefab;
-        }
+        prefabToCreate = dice < coloredFloorPrefabs.Length ? coloredFloorPrefabs[dice] : floorPrefab;
 
         //if (topFloor == null || floor.transform.position.y > topFloor.transform.position.y)
         //{
@@ -59,10 +47,18 @@ public class Destroy : MonoBehaviour
 
         bool moveFloor = false;
 
-        if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab) || checkIdentityBadly("yellow floor", collision, prefabToCreate, yellowFloorPrefab))
+        List<GameObject> allFloorPrefabs = new List<GameObject>(coloredFloorPrefabs);
+        allFloorPrefabs.Add(floorPrefab);
+
+        for (int i = 0; !moveFloor && i < allFloorPrefabs.Count; i++)
         {
-            moveFloor = true;
+            GameObject tmpFloorPrefab = allFloorPrefabs[i];
+            moveFloor = checkIdentityBadly("floor " + ColorUtils.getColorName(ColorUtils.ColorList[i]),collision, prefabToCreate, tmpFloorPrefab);
         }
+        //if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab) || checkIdentityBadly("yellow floor", collision, prefabToCreate, yellowFloorPrefab))
+        //{
+        //    moveFloor = true;
+        //}
 
         if (moveFloor)
         {
@@ -100,27 +96,27 @@ public class Destroy : MonoBehaviour
     }
     private void keyGeneration()
     {
-        int dice = Random.Range(1, 10);
-        GameObject prefabToCreate = null;
-        if (dice == 1)
-        {
-            prefabToCreate = redKeyPrefab;
-            //Debug.Log("dice say yes key pleasey");
+        int dice = Random.Range(0, 9);
+        GameObject prefabToCreate = dice < keyPrefabs.Length ? keyPrefabs[dice] : null;
+        //if (dice == 1)
+        //{
+        //    prefabToCreate = redKeyPrefab;
+        //    //Debug.Log("dice say yes key pleasey");
             
-            //Debug.Log("key created!!!!");
-        }
-        else if (dice == 2)
-        {
-            prefabToCreate = blueKeyPrefab;
-        }
-        else if (dice == 3)
-        {
-            prefabToCreate = yellowKeyPrefab;
-        }
-        else
-        {
-            //Debug.Log("dice say no key");
-        }
+        //    //Debug.Log("key created!!!!");
+        //}
+        //else if (dice == 2)
+        //{
+        //    prefabToCreate = blueKeyPrefab;
+        //}
+        //else if (dice == 3)
+        //{
+        //    prefabToCreate = yellowKeyPrefab;
+        //}
+        //else
+        //{
+        //    //Debug.Log("dice say no key");
+        //}
         if (prefabToCreate != null)
         {
             var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y + 13 * Random.Range(0.5f, 1f));

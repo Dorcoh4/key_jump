@@ -49,8 +49,14 @@ public class Movement : MonoBehaviour
 
 
 
-        CountKeys(this.keys, out int blueCount, out int redCount, out int yellowCount);
-        Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
+        CountKeys(this.keys, out int[] keyCounts);
+        String newText = "";
+        for (int i=0; i < ColorUtils.ColorList.Length; i++)
+        {
+            newText += "\n"+ ColorUtils.getColorName(ColorUtils.ColorList[i]) + " keys:" + keyCounts[i];
+        }
+        Canvas.GetComponent<Text>().text = newText;
+        //Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
         moveInput = Input.GetAxis("Horizontal");
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         if (timer == 0)
@@ -101,27 +107,13 @@ public class Movement : MonoBehaviour
             this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.YELLOW));
         }
     }
-    private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int blueCount, out int redCount, out int yellowCount)
+    private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int[] keyCounts)
     {
-        blueCount = 0;
-        redCount = 0;
-        yellowCount = 0;
+        keyCounts = new int[ColorUtils.ColorList.Length];
         for (int i = 0; i < keys.Count; i++)
         {
             var key = keys[i];
-            switch (key.Color)
-            {
-                case KeyPickup.KeyColor.BLUE:
-                    blueCount++;
-                    break;
-                case KeyPickup.KeyColor.RED:
-                    redCount++;
-                    break;
-                case KeyPickup.KeyColor.YELLOW:
-                    yellowCount++;
-                    break;
-            }
+            keyCounts[ColorUtils.getKey(key.Color)]++;
         }
     }
-
 }
