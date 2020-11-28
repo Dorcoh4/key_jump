@@ -29,7 +29,7 @@ public class DoorBlocker : MonoBehaviour
         {
             if (!doorOpen)
             {
-                Movement p1 = collision.gameObject.GetComponent<Movement>();
+                movement p1 = collision.gameObject.GetComponent<movement>();
                 if (p1 != null)
                 {
                     KeyPickup.KeyItem correctKey = GetCorrectKey(p1.keys);
@@ -55,7 +55,7 @@ public class DoorBlocker : MonoBehaviour
         }
     }
 
-    protected virtual void ActivateKey(Collision2D collision, Movement p1, KeyPickup.KeyItem correctKey)
+    protected virtual void ActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         p1.keys.Remove(correctKey);
         doorOpen = true;

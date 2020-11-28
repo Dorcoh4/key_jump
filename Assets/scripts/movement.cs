@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Movement : MonoBehaviour
+public class movement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
@@ -29,10 +29,12 @@ public class Movement : MonoBehaviour
     {
 
         // air resistance
+        //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
+        
         Vector2 vel = p1.velocity;
         vel.x *= 0.96f;
         float sign = vel.y < 0 ? -1f : 1f;
-        vel.y = Math.Abs(vel.y) < maxSpeed ?  vel.y : sign * maxSpeed ; 
+        vel.y = Math.Abs(vel.y) < maxSpeed ?  vel.y : sign * maxSpeed ;
         p1.velocity = vel;
         //if (Math.Abs( p1.velocity.x) < 2f)
         //{
@@ -61,33 +63,35 @@ public class Movement : MonoBehaviour
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         if (timer == 0)
         {
-            if (moveInput > 0)
-            {
-                p1.AddForce((Vector3.right * 250f));
-                timer = 15;
-            }
-            else if (moveInput < 0)
-            {
-                p1.AddForce((Vector3.left) * 250f);
-                timer = 15;
-            }
+            //if (moveInput > 0)
+            //{
+            //    p1.AddForce((Vector3.right * 250f));
+            //    timer = 15;
+            //}
+            //else if (moveInput < 0)
+            //{
+            //    p1.AddForce((Vector3.left) * 250f);
+            //    timer = 15;
+            //}
         }
         else
         {
             timer--;
         }
-
-        if (Input.touchCount > 0)
+        //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
+        if (Input.touches.Length > 0 && timer == 0)
         {
-            //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
-            ////TODO add dead zone
-            //bool goRight = p1.position.x + 2 < touchPosition.x;
-            //bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
-            //if (goLeft || goRight)
-            //{
-            //    p1.AddForce((goRight ? Vector3.right : Vector3.left) * 100);
-
-            //}
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
+            //Debug.Log("fordor22 " + touchPosition.ToString());
+            //TODO add dead zone
+            bool goRight = p1.position.x + 2 < touchPosition.x;
+            bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
+            if (goLeft || goRight)
+            {
+            //    Debug.Log("fordor this is left or right or something");
+                p1.AddForce((goRight ? Vector3.right : Vector3.left) * 250f);
+                timer = 15; 
+            }
         }
 
         // GOD MODE   

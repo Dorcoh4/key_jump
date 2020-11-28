@@ -121,6 +121,11 @@ public class Destroy : MonoBehaviour
         {
             var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y + 13 * Random.Range(0.5f, 1f));
             var newKey = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
+            Debug.Log("fordor k" + prefabToCreate.ToString());
+        }
+        else
+        {
+            Debug.Log("fordor kak" + keyPrefabs.Length);
         }
         
     }

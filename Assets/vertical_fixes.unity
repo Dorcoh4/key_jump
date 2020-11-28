@@ -1737,6 +1737,14 @@ PrefabInstance:
       value: 50.2282
       objectReference: {fileID: 0}
     - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: coloredFloorPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: keyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 3300871130862346795}
@@ -1778,6 +1786,30 @@ PrefabInstance:
       objectReference: {fileID: 4816277729949671301, guid: 96b7293fee39e7c4ea1020368387b678, type: 3}
     - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: yellowKeyPrefab
+      value: 
+      objectReference: {fileID: 7153661817995152928, guid: 3a7905e6e0475e146a32d98e940b90e8, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: coloredFloorPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 902955281964290866, guid: 8535559a58d99344d92ea9b79c213a69, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: coloredFloorPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6448361284929585899, guid: 4e15f9df61e9e7a46a380da101c73f7c, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: coloredFloorPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4816277729949671301, guid: 96b7293fee39e7c4ea1020368387b678, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: keyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6823993771221079667, guid: 8289ff3b5f9fcca40b95a8b2b04e30c4, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: keyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4445069296778916752, guid: 230ed053fad3a5b44a07436a731f853a, type: 3}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: keyPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 7153661817995152928, guid: 3a7905e6e0475e146a32d98e940b90e8, type: 3}
     - target: {fileID: 5851547811776445524, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
