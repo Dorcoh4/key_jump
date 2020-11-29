@@ -17,6 +17,8 @@ public class movement : MonoBehaviour
     public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(maxKeys);
     public GameObject Canvas;
     private int timer = 0;
+    private static readonly float INITIAL_FORCE_POWER = 2.2f;
+    private float force  = INITIAL_FORCE_POWER;
     public int maxSpeed;
     void Start()
     {
@@ -28,14 +30,7 @@ public class movement : MonoBehaviour
     void FixedUpdate()
     {
 
-        // air resistance
-        //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
         
-        Vector2 vel = p1.velocity;
-        vel.x *= 0.96f;
-        float sign = vel.y < 0 ? -1f : 1f;
-        vel.y = Math.Abs(vel.y) < maxSpeed ?  vel.y : sign * maxSpeed ;
-        p1.velocity = vel;
         //if (Math.Abs( p1.velocity.x) < 2f)
         //{
         //    p1.velocity = new Vector2(0, p1.velocity.y);
@@ -63,23 +58,17 @@ public class movement : MonoBehaviour
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         if (timer == 0)
         {
-            //if (moveInput > 0)
-            //{
-            //    p1.AddForce((Vector3.right * 250f));
-            //    timer = 15;
-            //}
-            //else if (moveInput < 0)
-            //{
-            //    p1.AddForce((Vector3.left) * 250f);
-            //    timer = 15;
-            //}
+            if (!Input.touchSupported && moveInput != 0)
+            {
+                //Vector3 direction = moveInput >= 0 ? Vector3.right : Vector3.left;
+                //p1.AddForce((direction * 2.2f), ForceMode2D.Impulse);
+            }
+            
         }
-        else
-        {
-            timer--;
-        }
+        int boostTime = 2;
+       
         //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
-        if (Input.touches.Length > 0 && timer == 0)
+        if (Input.touches.Length > 0 && timer <= boostTime)
         {
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
             //Debug.Log("fordor22 " + touchPosition.ToString());
@@ -88,10 +77,36 @@ public class movement : MonoBehaviour
             bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
             if (goLeft || goRight)
             {
-            //    Debug.Log("fordor this is left or right or something");
-                p1.AddForce((goRight ? Vector3.right : Vector3.left) * 250f);
-                timer = 15; 
+                //    Debug.Log("fordor this is left or right or something");
+                //p1.AddForce((goRight ? Vector3.right : Vector3.KCleft) * force, ForceMode2D.Impulse);
+                p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Force);
             }
+            if (timer == 0)
+            {
+                timer = 8;
+                force = 2.2f;
+            }
+            else
+            {
+                timer--;
+                force = force / 1.5f;
+            }
+
+        }
+        if (timer == 0)
+        {
+        }
+        else if (timer > boostTime)
+        {
+            timer--;
+            // air resistance
+            //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
+
+            Vector2 vel = p1.velocity;
+            vel.x *= 0.90f;
+            float sign = vel.y < 0 ? -1f : 1f;
+            vel.y = Math.Abs(vel.y) < maxSpeed ? vel.y : sign * maxSpeed;
+            p1.velocity = vel;
         }
 
         // GOD MODE   
@@ -121,3 +136,8 @@ public class movement : MonoBehaviour
         }
     }
 }
+
+
+
+// FORMICH 250f not impulse good for free fall game keft and right
+// IMPULSE 2.2f is good for going circles
