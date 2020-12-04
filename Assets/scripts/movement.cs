@@ -105,7 +105,7 @@ public class movement : MonoBehaviour
         //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
 
         Vector2 vel = p1.velocity;
-        vel.x *= 0.96f;
+        //vel.x *= 0.96f;
         float sign = vel.y < 0 ? -1f : 1f;
         vel.y = Math.Abs(vel.y) < maxSpeed ? vel.y : sign * maxSpeed;
         p1.velocity = vel;

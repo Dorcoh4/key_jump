@@ -42,12 +42,14 @@ public class DoorBlocker : MonoBehaviour
                         Momentum = START_MOMENTUM;
                         Rigidbody2D bouncer = collision.gameObject.GetComponent<Rigidbody2D>();
                         //bouncer.AddForce(Vector3.down * this.gameObject.GetComponent<bounce>().jumpFactor * 0.025f * Momentum * (float)Math.Pow( bouncer.velocity.y, 2));
-                        bouncer.velocity = new Vector2(bouncer.velocity.x, bouncer.velocity.y * 0.87f);
+                        bouncer.velocity = new Vector2(bouncer.velocity.x, 22f);
                         Debug.Log("no key :(");
+                        ComboMeasure.Combo = 0;
                     }
                     else
-                        ActivateKey(collision, p1, correctKey);
                     {
+                        ActivateKey(collision, p1, correctKey);
+                        ComboMeasure.IncrementCombo();
                     }
                 }
 
@@ -59,7 +61,7 @@ public class DoorBlocker : MonoBehaviour
     {
         p1.keys.Remove(correctKey);
         doorOpen = true;
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * Momentum);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * (1 + ComboMeasure.Combo / 10));
         if (Momentum < TOP_MOMENTUM)
         {
             Momentum += 0.05f;
