@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386408a61d9d08a46beb8663e0f98ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpFactor: 750
+  jumpFactor: 600
 --- !u!114 &4634687051816208349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +158,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColorString: 
   keyColor: 3
+  lerpee: {fileID: 0}
+  lerpDuration: 0.2

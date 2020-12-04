@@ -34,8 +34,8 @@ public class Teleport : DoorBlocker
         lerpStartValue = lerpee.transform.position;
         var newYLocation = lerpee.transform.position.y + (33 * Random.Range(0.6f, 1f));
         //}
-
-        var newLocation = new Vector2(Random.Range(-9.0f, 9.0f), newYLocation);
+        float range = 4.5f -1 ;
+        var newLocation = new Vector2(Random.Range(-range, range), newYLocation);
         lerpendValue = newLocation;
 
         

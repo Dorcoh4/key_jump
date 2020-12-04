@@ -68,46 +68,48 @@ public class movement : MonoBehaviour
         int boostTime = 2;
        
         //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
-        if (Input.touches.Length > 0 && timer <= boostTime)
+        if (Input.touches.Length > 0) //&& timer <= boostTime)
         {
+
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
-            //Debug.Log("fordor22 " + touchPosition.ToString());
+            Debug.Log("fordor22 " + touchPosition.ToString());
             //TODO add dead zone
             bool goRight = p1.position.x + 2 < touchPosition.x;
             bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
             if (goLeft || goRight)
             {
-                //    Debug.Log("fordor this is left or right or something");
+                Debug.Log("fordor this is left or right or something");
                 //p1.AddForce((goRight ? Vector3.right : Vector3.KCleft) * force, ForceMode2D.Impulse);
-                p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Force);
+                //p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Impulse);
+                p1.velocity = new Vector2((goRight ? +1 : -1) * 8f , p1.velocity.y );
             }
-            if (timer == 0)
-            {
-                timer = 8;
-                force = 2.2f;
-            }
-            else
-            {
-                timer--;
-                force = force / 1.5f;
-            }
+            //    if (timer == 0)
+            //    {
+            //        timer = 8;
+            //        force = 2.2f;
+            //    }
+            //    else
+            //    {
+            //        timer--;
+            //        force = force / 1.5f;
+        }
 
-        }
-        if (timer == 0)
-        {
-        }
-        else if (timer > boostTime)
-        {
-            timer--;
-            // air resistance
-            //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
+        //}
+        //if (timer == 0)
+        //{
+        //}
+        //else if (timer > boostTime)
+        //{
+        //    timer--;
+        // air resistance
+        //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
 
-            Vector2 vel = p1.velocity;
-            vel.x *= 0.90f;
-            float sign = vel.y < 0 ? -1f : 1f;
-            vel.y = Math.Abs(vel.y) < maxSpeed ? vel.y : sign * maxSpeed;
-            p1.velocity = vel;
-        }
+        Vector2 vel = p1.velocity;
+        vel.x *= 0.96f;
+        float sign = vel.y < 0 ? -1f : 1f;
+        vel.y = Math.Abs(vel.y) < maxSpeed ? vel.y : sign * maxSpeed;
+        p1.velocity = vel;
+        //}
 
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");

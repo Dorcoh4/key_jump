@@ -17,6 +17,7 @@ public class Destroy : MonoBehaviour
     public GameObject blueKeyPrefab;
     public GameObject yellowKeyPrefab;
     private List<Vector2> previousList = new List<Vector2>();
+    public static readonly float CREATION_RANGE = 4.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -119,7 +120,7 @@ public class Destroy : MonoBehaviour
         //}
         if (prefabToCreate != null)
         {
-            var newLocation = new Vector2(Random.Range(-5.5f, 5.5f), p1.transform.position.y + 13 * Random.Range(0.5f, 1f));
+            var newLocation = new Vector2(Random.Range(-CREATION_RANGE, CREATION_RANGE), p1.transform.position.y + 13 * Random.Range(0.5f, 1f));
             var newKey = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
             Debug.Log("fordor k" + prefabToCreate.ToString());
         }
