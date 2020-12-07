@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6448361284929585898}
   - component: {fileID: 3749515701621716205}
   - component: {fileID: 2237278351459193443}
-  - component: {fileID: -2513699115535764291}
+  - component: {fileID: 3527803520803224302}
   m_Layer: 0
   m_Name: blue floor prefab
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpFactor: 600
---- !u!114 &-2513699115535764291
+--- !u!114 &3527803520803224302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6448361284929585899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0daa1121d83c584ead83107cf80fca8, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d589d457b031044870a2a8aeef54fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ColorString: 
-  keyColor: 2
+  keyColor: 1

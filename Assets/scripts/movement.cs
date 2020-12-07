@@ -11,6 +11,14 @@ public class movement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
+    private bool invertX = false;
+
+    internal void InvertControls()
+    {
+        invertX = !invertX;
+        Debug.Log("hallo  " + invertX);
+    }
+
     public Rigidbody2D p1;
     public float moveInput;
     public static readonly int maxKeys = 4;
@@ -81,7 +89,7 @@ public class movement : MonoBehaviour
                 Debug.Log("fordor this is left or right or something");
                 //p1.AddForce((goRight ? Vector3.right : Vector3.KCleft) * force, ForceMode2D.Impulse);
                 //p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Impulse);
-                p1.velocity = new Vector2((goRight ? +1 : -1) * 8f , p1.velocity.y );
+                p1.velocity = new Vector2((goRight ? +1 : -1) * (invertX ? -1 : 1) * 8f , p1.velocity.y );
             }
             
             //    if (timer == 0)

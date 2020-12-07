@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4842424752028053510, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: keyColor
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4842424752028053510, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: ColorString

@@ -66,7 +66,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225995407504293271, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: m_Name
-      value: blue key
+      value: blue key Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1225995407504293271, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: m_Layer
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4842424752028053510, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: keyColor
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5459054213095337361, guid: c00937a619bae864d9b2d6bd8b67f6b0, type: 3}
       propertyPath: m_LocalPosition.x

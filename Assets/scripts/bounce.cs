@@ -26,7 +26,7 @@ public class bounce : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
             rigidBody.AddForce(Vector3.up * jumpFactor);
-            Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
+            //Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
         }
         else
         {

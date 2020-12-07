@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7e71273b7b0b14a87cc9f35ad2697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyColor: 1
+  keyColor: 0
   ColorString: '"red"'
 --- !u!1001 &901724716155345888
 PrefabInstance:

@@ -157,6 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorString: 
-  keyColor: 3
+  keyColor: 2
   lerpee: {fileID: 0}
   lerpDuration: 0.2
