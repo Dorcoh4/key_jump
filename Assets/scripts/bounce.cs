@@ -6,6 +6,7 @@ public class bounce : MonoBehaviour
 {
     public float jumpFactor;
     private readonly float DEFAULT_JUMP = 1000;
+    private int cnt = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,12 @@ public class bounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if ( collision.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+        Rigidbody2D rigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        if ( rigidBody.velocity.y <= 0)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpFactor);
-            //Debug.Log("something touched me from above");
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+            rigidBody.AddForce(Vector3.up * jumpFactor);
+            Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
         }
         else
         {
