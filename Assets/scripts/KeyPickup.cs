@@ -38,7 +38,7 @@ public class KeyPickup : MonoBehaviour
         if (p1 != null)
         {
             p1.keys.Add(new KeyItem(keyColor));
-            Debug.Log("got a key!!!");
+            //Debug.Log("got a key!!!");
             Destroy(gameObject);
         }
     }
@@ -59,6 +59,7 @@ public class KeyPickup : MonoBehaviour
         RED,
         BLUE,
         YELLOW,
+        PURPLE,
         NONE
     }
 }

@@ -80,13 +80,13 @@ public class movement : MonoBehaviour
         {
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
-            Debug.Log("fordor22 " + touchPosition.ToString());
+            //Debug.Log("fordor22 " + touchPosition.ToString());
             //TODO add dead zone
             bool goRight = p1.position.x + 2 < touchPosition.x;
             bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
             if (goLeft || goRight)
             {
-                Debug.Log("fordor this is left or right or something");
+                //Debug.Log("fordor this is left or right or something");
                 //p1.AddForce((goRight ? Vector3.right : Vector3.KCleft) * force, ForceMode2D.Impulse);
                 //p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Impulse);
                 p1.velocity = new Vector2((goRight ? +1 : -1) * (invertX ? -1 : 1) * 8f , p1.velocity.y );

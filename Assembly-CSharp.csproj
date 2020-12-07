@@ -60,6 +60,7 @@
     <Compile Include="Assets\scripts\bigbounce.cs" />
     <Compile Include="Assets\scripts\platform.cs" />
     <Compile Include="Assets\scripts\Destroy.cs" />
+    <Compile Include="Assets\scripts\InvertControls.cs" />
     <Compile Include="Assets\scripts\bounce.cs" />
     <Compile Include="Assets\scripts\movement.cs" />
     <Compile Include="Assets\scripts\KeyPickup.cs" />
@@ -67,7 +68,7 @@
     <Compile Include="Assets\scripts\ComboMeasure.cs" />
     <Compile Include="Assets\scripts\Teleporter.cs" />
     <Compile Include="Assets\scripts\Utils\FixedSizedQueue.cs" />
-    <Compile Include="Assets\scripts\InvertControls.cs" />
+    <Compile Include="Assets\scripts\InvertCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

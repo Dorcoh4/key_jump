@@ -10,7 +10,7 @@ public class InvertControls : DoorBlocker
         
     }
 
-    protected override void ActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    protected override void DoActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         p1.InvertControls();
     }

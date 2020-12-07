@@ -56,15 +56,20 @@ public class DoorBlocker : MonoBehaviour
         }
     }
 
-    protected virtual void ActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    protected void ActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         p1.keys.Remove(correctKey);
         doorOpen = true;
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * (1 + ComboMeasure.Combo / 10));
+        DoActivateKey(collision, p1, correctKey);
         if (Momentum < TOP_MOMENTUM)
         {
             Momentum += 0.05f;
         }
+    }
+
+    protected virtual void DoActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    {
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * (1 + ComboMeasure.Combo / 10));
     }
 
     private KeyPickup.KeyItem GetCorrectKey(FixedSizedQueue<KeyPickup.KeyItem> keys)

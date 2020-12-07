@@ -22,8 +22,10 @@ namespace Assets.scripts.Utils
                     return 1;
                 case KeyPickup.KeyColor.YELLOW:
                     return 2;
-                case KeyPickup.KeyColor.NONE:
+                case KeyPickup.KeyColor.PURPLE:
                     return 3;
+                case KeyPickup.KeyColor.NONE:
+                    return 4;
             }
             return -1;
         }
@@ -37,6 +39,8 @@ namespace Assets.scripts.Utils
                     return "blue";
                 case KeyPickup.KeyColor.YELLOW:
                     return "yellow";
+                case KeyPickup.KeyColor.PURPLE:
+                    return "purple";
                 case KeyPickup.KeyColor.NONE:
                     return "";
             }
