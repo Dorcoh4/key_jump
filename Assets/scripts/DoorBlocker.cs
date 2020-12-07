@@ -1,5 +1,4 @@
 ﻿using Assets.scripts.Utils;
-using System;
 using UnityEngine;
 
 public class DoorBlocker : MonoBehaviour

@@ -784,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2768751151445240102, guid: 8f3b8d5fee166fe45a2531e3375c331b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: -11.61
       objectReference: {fileID: 0}
     - target: {fileID: 2768751151445240102, guid: 8f3b8d5fee166fe45a2531e3375c331b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1262,7 +1262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -122, y: -387}
+  m_AnchoredPosition: {x: -122, y: -337}
   m_SizeDelta: {x: 220, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1936984813
@@ -1332,7 +1332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2768751151445240102, guid: 8f3b8d5fee166fe45a2531e3375c331b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.55
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 2768751151445240102, guid: 8f3b8d5fee166fe45a2531e3375c331b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1801,12 +1801,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067424, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5851547811063067451, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}

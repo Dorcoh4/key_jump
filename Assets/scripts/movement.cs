@@ -83,6 +83,7 @@ public class movement : MonoBehaviour
                 //p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Impulse);
                 p1.velocity = new Vector2((goRight ? +1 : -1) * 8f , p1.velocity.y );
             }
+            
             //    if (timer == 0)
             //    {
             //        timer = 8;
@@ -92,6 +93,10 @@ public class movement : MonoBehaviour
             //    {
             //        timer--;
             //        force = force / 1.5f;
+        }
+        else
+        {
+            p1.velocity = new Vector2(0, p1.velocity.y);
         }
 
         //}
