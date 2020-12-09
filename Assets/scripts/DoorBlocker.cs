@@ -42,7 +42,7 @@ public class DoorBlocker : MonoBehaviour
                         Rigidbody2D bouncer = collision.gameObject.GetComponent<Rigidbody2D>();
                         //bouncer.AddForce(Vector3.down * this.gameObject.GetComponent<bounce>().jumpFactor * 0.025f * Momentum * (float)Math.Pow( bouncer.velocity.y, 2));
                         bouncer.velocity = new Vector2(bouncer.velocity.x, 22f);
-                        Debug.Log("no key :(");
+                        //Debug.Log("no key :(");
                         ComboMeasure.Combo = 0;
                     }
                     else

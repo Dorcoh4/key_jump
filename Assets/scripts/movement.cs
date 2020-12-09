@@ -66,7 +66,7 @@ public class movement : MonoBehaviour
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");
-        if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
+        if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed*20);
         if (timer == 0)
         {
             if (!Input.touchSupported && moveInput != 0)

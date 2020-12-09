@@ -33,7 +33,12 @@ public class Destroy : MonoBehaviour
             GameObject bgPiece = backgrounds[i];
             if (collision.gameObject.Equals(bgPiece))
             {
-                bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + backgrounds[i == 1 ? 0:1].GetComponent<Sprite>().rect.height, 0);
+                Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
+                float newBGY = 418.418f; //backgrounds[i == 1 ? 0 : 1].transform.GetChild(0).transform.position.y; //+ backgrounds[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                float PPU = backgrounds[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+                Debug.Log("FORDOR " +i+ " dude - " + newBGY);
+                //Debug.Log($"ymax {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMax}, height {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.height}, ymin {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMin}, ");
+                bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + newBGY, bgPiece.transform.position.z);                
                 return;
             }
 
@@ -114,7 +119,7 @@ public class Destroy : MonoBehaviour
     }
     private void keyGeneration()
     {
-        int dice = Random.Range(0, 28);
+        int dice = Random.Range(0, 18);
         GameObject prefabToCreate = dice < keyPrefabs.Length ? keyPrefabs[dice] : null;
         //if (dice == 1)
         //{
