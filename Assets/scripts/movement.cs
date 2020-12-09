@@ -26,19 +26,19 @@ public class movement : MonoBehaviour
     public GameObject Canvas;
     private int timer = 0;
     private static readonly float INITIAL_FORCE_POWER = 2.2f;
-    private float force  = INITIAL_FORCE_POWER;
+    private float force = INITIAL_FORCE_POWER;
     public int maxSpeed;
     void Start()
     {
         speed = 10;
         p1 = GetComponent<Rigidbody2D>();
-}
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        
+
         //if (Math.Abs( p1.velocity.x) < 2f)
         //{
         //    p1.velocity = new Vector2(0, p1.velocity.y);
@@ -56,9 +56,9 @@ public class movement : MonoBehaviour
 
         CountKeys(this.keys, out int[] keyCounts);
         String newText = "";
-        for (int i=0; i < ColorUtils.ColorList.Length; i++)
+        for (int i = 0; i < ColorUtils.ColorList.Length; i++)
         {
-            newText += "\n"+ ColorUtils.getColorName(ColorUtils.ColorList[i]) + " keys:" + keyCounts[i];
+            newText += "\n" + ColorUtils.getColorName(ColorUtils.ColorList[i]) + " keys:" + keyCounts[i];
         }
         Canvas.GetComponent<Text>().text = newText;
         //Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
@@ -71,10 +71,10 @@ public class movement : MonoBehaviour
                 //Vector3 direction = moveInput >= 0 ? Vector3.right : Vector3.left;
                 //p1.AddForce((direction * 2.2f), ForceMode2D.Impulse);
             }
-            
+
         }
         int boostTime = 2;
-       
+
         //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
         if (Input.touches.Length > 0) //&& timer <= boostTime)
         {
@@ -89,9 +89,9 @@ public class movement : MonoBehaviour
                 //Debug.Log("fordor this is left or right or something");
                 //p1.AddForce((goRight ? Vector3.right : Vector3.KCleft) * force, ForceMode2D.Impulse);
                 //p1.AddForce((goRight ? Vector3.right : Vector3.left) * force * 70f, ForceMode2D.Impulse);
-                p1.velocity = new Vector2((goRight ? +1 : -1) * (invertX ? -1 : 1) * 8f , p1.velocity.y );
+                p1.velocity = new Vector2((goRight ? +1 : -1) * (invertX ? -1 : 1) * 8f, p1.velocity.y);
             }
-            
+
             //    if (timer == 0)
             //    {
             //        timer = 8;
@@ -126,7 +126,7 @@ public class movement : MonoBehaviour
 
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");
-        if (moveInput > 0 ) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
+        if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
 
         if (Input.GetKey(KeyCode.E))
         {
