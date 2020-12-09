@@ -16,6 +16,7 @@ public class Destroy : MonoBehaviour
     public GameObject redKeyPrefab;
     public GameObject blueKeyPrefab;
     public GameObject yellowKeyPrefab;
+    public GameObject[] backgrounds;
     private List<Vector2> previousList = new List<Vector2>();
     public static readonly float CREATION_RANGE = 4.5f;
     // Start is called before the first frame update
@@ -27,6 +28,15 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        for (int i = 0; i < backgrounds.Length ; i++)
+        {
+            GameObject bgPiece = backgrounds[i];
+            if (collision.gameObject.Equals(bgPiece))
+            {
+                bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + backgrounds[i == 1 ? 0:1].GetComponent<Sprite>().rect.height, 0);
+            }
+
+        }
         GameObject prefabToCreate;
         int dice = Random.Range(0, 5);
         bool noOverlap = false;
