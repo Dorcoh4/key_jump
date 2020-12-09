@@ -40,7 +40,7 @@ public class Destroy : MonoBehaviour
         }
         keyGeneration();
 
-        if (collision.gameObject.name.StartsWith("floor"))
+        if (collision.gameObject.name.Contains("floor"))
         {
             GameObject prefabToCreate;
             int dice = Random.Range(0, 5);
@@ -114,7 +114,7 @@ public class Destroy : MonoBehaviour
     }
     private void keyGeneration()
     {
-        int dice = Random.Range(0, 10);
+        int dice = Random.Range(0, 28);
         GameObject prefabToCreate = dice < keyPrefabs.Length ? keyPrefabs[dice] : null;
         //if (dice == 1)
         //{

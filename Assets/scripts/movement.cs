@@ -64,6 +64,9 @@ public class movement : MonoBehaviour
         //Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
         moveInput = Input.GetAxis("Horizontal");
         //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
+        // GOD MODE   
+        moveInput = Input.GetAxis("Vertical");
+        if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
         if (timer == 0)
         {
             if (!Input.touchSupported && moveInput != 0)
@@ -124,9 +127,7 @@ public class movement : MonoBehaviour
         p1.velocity = vel;
         //}
 
-        // GOD MODE   
-        moveInput = Input.GetAxis("Vertical");
-        if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed);
+        // keys cheat
 
         if (Input.GetKey(KeyCode.E))
         {
