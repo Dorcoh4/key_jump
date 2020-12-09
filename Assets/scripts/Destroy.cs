@@ -34,52 +34,59 @@ public class Destroy : MonoBehaviour
             if (collision.gameObject.Equals(bgPiece))
             {
                 bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + backgrounds[i == 1 ? 0:1].GetComponent<Sprite>().rect.height, 0);
+                return;
             }
 
         }
-        GameObject prefabToCreate;
-        int dice = Random.Range(0, 5);
-        bool noOverlap = false;
         keyGeneration();
-        prefabToCreate = dice < coloredFloorPrefabs.Length ? coloredFloorPrefabs[dice] : floorPrefab;
 
-        //if (topFloor == null || floor.transform.position.y > topFloor.transform.position.y)
-        //{
-        //    topFloor = floor;
-        //}
-
-        //var newYLocation = p1.transform.position.y + (15);
-        //if (floor != null && newYLocation - floor.transform.position.y < 7 )
-        //{
-        var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
-        //}
-
-        var newLocation = new Vector2(Random.Range(-9.0f, 9.0f), newYLocation);
-
-        bool moveFloor = false;
-
-        List<GameObject> allFloorPrefabs = new List<GameObject>(coloredFloorPrefabs);
-        allFloorPrefabs.Add(floorPrefab);
-
-        for (int i = 0; !moveFloor && i < allFloorPrefabs.Count; i++)
+        if (collision.gameObject.name.StartsWith("floor"))
         {
-            GameObject tmpFloorPrefab = allFloorPrefabs[i];
-            moveFloor = checkIdentityBadly("floor " + ColorUtils.getColorName(ColorUtils.ColorList[i]),collision, prefabToCreate, tmpFloorPrefab);
-        }
-        //if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab) || checkIdentityBadly("yellow floor", collision, prefabToCreate, yellowFloorPrefab))
-        //{
-        //    moveFloor = true;
-        //}
+            GameObject prefabToCreate;
+            int dice = Random.Range(0, 5);
+            bool noOverlap = false;
 
-        if (moveFloor)
-        {
-            collision.gameObject.transform.position = newLocation;
-            topFloor = collision.gameObject;
-        }
-        else
-        {
-            topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
-            Destroy(collision.gameObject);
+            prefabToCreate = dice < coloredFloorPrefabs.Length ? coloredFloorPrefabs[dice] : floorPrefab;
+
+            //if (topFloor == null || floor.transform.position.y > topFloor.transform.position.y)
+            //{
+            //    topFloor = floor;
+            //}
+
+            //var newYLocation = p1.transform.position.y + (15);
+            //if (floor != null && newYLocation - floor.transform.position.y < 7 )
+            //{
+            var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
+            //}
+
+            var newLocation = new Vector2(Random.Range(-9.0f, 9.0f), newYLocation);
+
+            bool moveFloor = false;
+
+            List<GameObject> allFloorPrefabs = new List<GameObject>(coloredFloorPrefabs);
+            allFloorPrefabs.Add(floorPrefab);
+
+            for (int i = 0; !moveFloor && i < allFloorPrefabs.Count; i++)
+            {
+                GameObject tmpFloorPrefab = allFloorPrefabs[i];
+                moveFloor = checkIdentityBadly("floor " + ColorUtils.getColorName(ColorUtils.ColorList[i]), collision, prefabToCreate, tmpFloorPrefab);
+            }
+            //if (checkIdentityBadly("floor", collision, prefabToCreate, floorPrefab) || checkIdentityBadly("red floor", collision, prefabToCreate, bigJumpFloorPrefab) || checkIdentityBadly("blue floor", collision, prefabToCreate, blueFloorPrefab) || checkIdentityBadly("yellow floor", collision, prefabToCreate, yellowFloorPrefab))
+            //{
+            //    moveFloor = true;
+            //}
+
+            if (moveFloor)
+            {
+                collision.gameObject.transform.position = newLocation;
+                topFloor = collision.gameObject;
+            }
+            else
+            {
+                topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
+                Destroy(collision.gameObject);
+            }
+
         }
 
         //Vector2 newLocation;
@@ -107,7 +114,7 @@ public class Destroy : MonoBehaviour
     }
     private void keyGeneration()
     {
-        int dice = Random.Range(0, 9);
+        int dice = Random.Range(0, 10);
         GameObject prefabToCreate = dice < keyPrefabs.Length ? keyPrefabs[dice] : null;
         //if (dice == 1)
         //{
