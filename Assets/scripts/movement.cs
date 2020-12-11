@@ -29,6 +29,8 @@ public class movement : MonoBehaviour
     private float force = INITIAL_FORCE_POWER;
     public int maxSpeed;
     public GameObject MainCamera;
+    public Lerper cameraLerper;
+    public float lastDestroyedHeight;
     void Start()
     {
         speed = 10;
@@ -38,11 +40,9 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // camera entangle
+
+
         Camera mainCamera = MainCamera.GetComponent<Camera>();
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, this.gameObject.transform.position.y, mainCamera.transform.position.z) ;
-
-
         //if (Math.Abs( p1.velocity.x) < 2f)
         //{
         //    p1.velocity = new Vector2(0, p1.velocity.y);
@@ -154,6 +154,20 @@ public class movement : MonoBehaviour
             var key = keys[i];
             keyCounts[ColorUtils.getKey(key.Color)]++;
         }
+    }
+
+    private void LateUpdate()
+    {
+        // camera entangle
+        
+       
+        Camera mainCamera = MainCamera.GetComponent<Camera>();
+        if (p1.position.y + 6 >= lastDestroyedHeight)
+        {
+            mainCamera.transform.position = new Vector3(MainCamera.transform.position.x, this.gameObject.transform.position.y + 6, MainCamera.transform.position.z);  //new Lerper(MainCamera, 1f, new Vector3(MainCamera.transform.position.x, this.gameObject.transform.position.y + 10, MainCamera.transform.position.z));
+            lastDestroyedHeight = mainCamera.transform.position.y;
+        }
+        
     }
 }
 

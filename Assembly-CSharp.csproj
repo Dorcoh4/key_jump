@@ -69,6 +69,7 @@
     <Compile Include="Assets\scripts\Teleporter.cs" />
     <Compile Include="Assets\scripts\Utils\FixedSizedQueue.cs" />
     <Compile Include="Assets\scripts\InvertCamera.cs" />
+    <Compile Include="Assets\scripts\Utils\Lerper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -108,7 +108,7 @@ public class Destroy : MonoBehaviour
                 topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
                 Destroy(collision.gameObject);
             }
-
+            //p1.GetComponent<movement>().lastDestroyedHeight = collision.gameObject.transform.position.y;
         }
 
         //Vector2 newLocation;
