@@ -70,6 +70,7 @@
     <Compile Include="Assets\scripts\Utils\FixedSizedQueue.cs" />
     <Compile Include="Assets\scripts\InvertCamera.cs" />
     <Compile Include="Assets\scripts\Utils\Lerper.cs" />
+    <Compile Include="Assets\scripts\PotatoCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

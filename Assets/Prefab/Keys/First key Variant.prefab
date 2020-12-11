@@ -78,6 +78,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.84
+      objectReference: {fileID: 0}
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1542511
+      objectReference: {fileID: 0}
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2454987
+      objectReference: {fileID: 0}
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.0278802
+      objectReference: {fileID: 0}
+    - target: {fileID: -1575787669957210130, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_Size.x
+      value: 2.3757606
+      objectReference: {fileID: 0}
     - target: {fileID: 644519722948582805, guid: 9519002879ae86b4199576480c41c254, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09
@@ -124,16 +148,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 644519722948582805, guid: 9519002879ae86b4199576480c41c254, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.3761096
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 644519722948582805, guid: 9519002879ae86b4199576480c41c254, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.3761096
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 644519722948582805, guid: 9519002879ae86b4199576480c41c254, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.3761096
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2479776679037697995, guid: 9519002879ae86b4199576480c41c254, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 813c06bf534625841a09fbd45130779a, type: 3}
     - target: {fileID: 5922273040950709651, guid: 9519002879ae86b4199576480c41c254, type: 3}
       propertyPath: m_Name
       value: First key Variant

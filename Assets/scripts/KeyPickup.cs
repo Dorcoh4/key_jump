@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class KeyPickup : MonoBehaviour
 {
     
+ 
+
     public KeyColor keyColor;
     public string ColorString;
     public class KeyItem{
@@ -50,9 +53,11 @@ public class KeyPickup : MonoBehaviour
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
-        
+       
     }
     public enum KeyColor
     {
