@@ -17,6 +17,7 @@ public class Destroy : MonoBehaviour
     public GameObject blueKeyPrefab;
     public GameObject yellowKeyPrefab;
     public GameObject[] backgrounds;
+    public GameObject[] bigStems;
     private List<Vector2> previousList = new List<Vector2>();
     public static readonly float CREATION_RANGE = 4.5f;
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class Destroy : MonoBehaviour
             if (collision.gameObject.Equals(bgPiece))
             {
                 Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
-                float newBGY = 418.418f; //backgrounds[i == 1 ? 0 : 1].transform.GetChild(0).transform.position.y; //+ backgrounds[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                float newBGY = 278.278f; //backgrounds[i == 1 ? 0 : 1].transform.GetChild(0).transform.position.y; //+ backgrounds[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                 float PPU = backgrounds[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
                 Debug.Log("FORDOR " +i+ " dude - " + newBGY);
                 //Debug.Log($"ymax {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMax}, height {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.height}, ymin {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMin}, ");
@@ -43,6 +44,22 @@ public class Destroy : MonoBehaviour
             }
 
         }
+        for (int i = 0; i < bigStems.Length; i++)
+        {
+            GameObject bgPiece = bigStems[i];
+            if (collision.gameObject.Equals(bgPiece))
+            {
+                Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
+                float newBGY = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.bounds.size.y + bigStems[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                float PPU = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+                Debug.Log("FORDOR " + i + " dude - " + newBGY);
+                //Debug.Log($"ymax {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMax}, height {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.height}, ymin {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMin}, ");
+                bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + newBGY, bgPiece.transform.position.z);
+                return;
+            }
+
+        }
+
         keyGeneration();
 
         if (collision.gameObject.name.Contains("floor"))

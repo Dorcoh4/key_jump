@@ -28,6 +28,7 @@ public class movement : MonoBehaviour
     private static readonly float INITIAL_FORCE_POWER = 2.2f;
     private float force = INITIAL_FORCE_POWER;
     public int maxSpeed;
+    public GameObject MainCamera;
     void Start()
     {
         speed = 10;
@@ -37,6 +38,9 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // camera entangle
+        Camera mainCamera = MainCamera.GetComponent<Camera>();
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, this.gameObject.transform.position.y, mainCamera.transform.position.z) ;
 
 
         //if (Math.Abs( p1.velocity.x) < 2f)
@@ -63,7 +67,7 @@ public class movement : MonoBehaviour
         Canvas.GetComponent<Text>().text = newText;
         //Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
         moveInput = Input.GetAxis("Horizontal");
-        //p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
+        p1.velocity = new Vector2(moveInput * speed * 20, p1.velocity.y);
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");
         if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed*20);
@@ -85,8 +89,8 @@ public class movement : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
             //Debug.Log("fordor22 " + touchPosition.ToString());
             //TODO add dead zone
-            bool goRight = p1.position.x + 2 < touchPosition.x;
-            bool goLeft = goRight ? false : p1.position.x > touchPosition.x + 2;
+            bool goRight = mainCamera.transform.position.x + 2 < touchPosition.x;
+            bool goLeft = goRight ? false : mainCamera.transform.position.x > touchPosition.x + 2;
             if (goLeft || goRight)
             {
                 //Debug.Log("fordor this is left or right or something");
