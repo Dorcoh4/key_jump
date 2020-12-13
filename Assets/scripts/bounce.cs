@@ -19,10 +19,10 @@ public class bounce : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D rigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
-        if ( rigidBody.velocity.y <= 0)
+        if ( rigidBody != null && rigidBody.velocity.y <= 0)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
             rigidBody.AddForce(Vector3.up * jumpFactor);
