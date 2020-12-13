@@ -29,6 +29,8 @@ public class movement : MonoBehaviour
     private float force = INITIAL_FORCE_POWER;
     public int maxSpeed;
     public GameObject MainCamera;
+    public GameObject PlayerKiller;
+    private float playerKillerDistanceFromCamera;
     public Lerper cameraLerper;
     public float lastDestroyedHeight;
     public int blockedRight;
@@ -37,6 +39,7 @@ public class movement : MonoBehaviour
     {
         speed = 10;
         p1 = GetComponent<Rigidbody2D>();
+        playerKillerDistanceFromCamera = MainCamera.transform.position.y - PlayerKiller.transform.position.y;
     }
 
     // Update is called once per frame
@@ -178,6 +181,7 @@ public class movement : MonoBehaviour
         if (p1.position.y + 6 >= lastDestroyedHeight)
         {
             mainCamera.transform.position = new Vector3(MainCamera.transform.position.x, this.gameObject.transform.position.y + 6, MainCamera.transform.position.z);  //new Lerper(MainCamera, 1f, new Vector3(MainCamera.transform.position.x, this.gameObject.transform.position.y + 10, MainCamera.transform.position.z));
+            PlayerKiller.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y - playerKillerDistanceFromCamera, mainCamera.transform.position.z);
             lastDestroyedHeight = mainCamera.transform.position.y;
         }
         

@@ -26,7 +26,7 @@ public class Destroy : MonoBehaviour
     {
         
 
-        Debug.Log("hit something " + collision.gameObject.name);
+        //Debug.Log("hit something " + collision.gameObject.name);
 
         for (int i = 0; i < backgrounds.Length ; i++)
         {

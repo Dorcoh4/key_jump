@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerKiller : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerKiller : MonoBehaviour
         {
             Debug.LogError("GAME OVER :_____________(");
             Destroy(collision.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
         }
     }

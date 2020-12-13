@@ -19,12 +19,8 @@ public class InvertCamera : DoorBlocker
     {
         for (int i = 0; i < p1.transform.childCount - 1; i++)
         {
-            Transform t = p1.transform.GetChild(i);
-            if (t.transform.name.Contains("Camera"))
-            {
-                t.transform.Rotate(0, 0, 180);
-            }
-            Debug.Log(t.transform.name);
+           p1.MainCamera.transform.Rotate(0, 0, 180);
+            //Debug.Log(t.transform.name);
         }
     }
 }
