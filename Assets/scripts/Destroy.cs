@@ -2,20 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Destroy : MonoBehaviour
 {
     public GameObject p1;
     public GameObject floorPrefab;
-    public GameObject bigJumpFloorPrefab;
-    public GameObject blueFloorPrefab;
-    public GameObject yellowFloorPrefab;
     public GameObject topFloor;
     public GameObject[] coloredFloorPrefabs;
     public GameObject[] keyPrefabs;
-    public GameObject redKeyPrefab;
-    public GameObject blueKeyPrefab;
-    public GameObject yellowKeyPrefab;
     public GameObject[] backgrounds;
     public GameObject[] bigStems;
     private List<Vector2> previousList = new List<Vector2>();
@@ -29,6 +24,16 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // death
+
+        if (collision.gameObject.GetComponent<movement>() != null)
+        {
+            Debug.LogError("GAME OVER :_____________(");
+            return;
+        }
+
+        Debug.Log("hit something " + collision.gameObject.name);
+
         for (int i = 0; i < backgrounds.Length ; i++)
         {
             GameObject bgPiece = backgrounds[i];
@@ -49,10 +54,10 @@ public class Destroy : MonoBehaviour
             GameObject bgPiece = bigStems[i];
             if (collision.gameObject.Equals(bgPiece))
             {
-                Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
+                //Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
                 float newBGY = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.bounds.size.y + bigStems[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
                 float PPU = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-                Debug.Log("FORDOR " + i + " dude - " + newBGY);
+                //Debug.Log("FORDOR " + i + " dude - " + newBGY);
                 //Debug.Log($"ymax {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMax}, height {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.height}, ymin {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMin}, ");
                 bgPiece.transform.position = new Vector3(bgPiece.transform.position.x, bgPiece.transform.position.y + newBGY, bgPiece.transform.position.z);
                 return;
