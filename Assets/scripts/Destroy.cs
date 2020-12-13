@@ -24,13 +24,7 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // death
-
-        if (collision.gameObject.GetComponent<movement>() != null)
-        {
-            Debug.LogError("GAME OVER :_____________(");
-            return;
-        }
+        
 
         Debug.Log("hit something " + collision.gameObject.name);
 
