@@ -69,9 +69,9 @@
     <Compile Include="Assets\scripts\Teleport.cs" />
     <Compile Include="Assets\scripts\ComboMeasure.cs" />
     <Compile Include="Assets\scripts\Teleporter.cs" />
+    <Compile Include="Assets\scripts\PlayerKiller.cs" />
     <Compile Include="Assets\scripts\Utils\FixedSizedQueue.cs" />
     <Compile Include="Assets\scripts\InvertCamera.cs" />
-    <Compile Include="Assets\scripts\PlayerKiller.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

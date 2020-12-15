@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bounce : MonoBehaviour
 {
+    public AudioClip sound;
     public float jumpFactor;
     private readonly float DEFAULT_JUMP = 1000;
     private int cnt = 0;
@@ -11,6 +12,10 @@ public class bounce : MonoBehaviour
     void Start()
     {
         jumpFactor = jumpFactor != 0 ? jumpFactor : DEFAULT_JUMP;
+
+        //GetComponent<AudioSource>().playOnAwake = false;
+        //GetComponent<AudioSource>().clip = sound;
+
     }
 
     // Update is called once per frame
@@ -26,7 +31,13 @@ public class bounce : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
             rigidBody.AddForce(Vector3.up * jumpFactor);
+
             //Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
+            if (collision.gameObject.GetComponent<movement>() != null)
+            {
+                //GetComponent<AudioSource>().Play();
+
+            }
         }
         else
         {
