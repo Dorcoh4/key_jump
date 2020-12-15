@@ -5395,7 +5395,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -3.0201125, y: 2.016974}
+  - {x: -3.0111933, y: 6.367124}
   - {x: -3.0596585, y: -5.042437}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -5418,7 +5418,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 3.013001, y: -5.121191}
-  - {x: 3.0446994, y: 2.1238875}
+  - {x: 3.0502505, y: 7.6675673}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -8231,6 +8231,22 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.09
       objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067424, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.07918823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067424, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0931447
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067424, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03395343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851547811063067424, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: m_Size.y
+      value: 4.2306275
+      objectReference: {fileID: 0}
     - target: {fileID: 5851547811063067431, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LinearDrag
       value: 0
@@ -8285,7 +8301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851547811752230956, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.2
+      value: -18.9
       objectReference: {fileID: 0}
     - target: {fileID: 5851547811752230956, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LocalScale.x

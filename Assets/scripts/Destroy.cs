@@ -24,10 +24,9 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
 
+        if (collision.gameObject.GetComponent<movement>() != null) return;
         //Debug.Log("hit something " + collision.gameObject.name);
-
         for (int i = 0; i < backgrounds.Length ; i++)
         {
             GameObject bgPiece = backgrounds[i];
@@ -96,15 +95,21 @@ public class Destroy : MonoBehaviour
             //{
             //    moveFloor = true;
             //}
-
+            bool rightOfDestoryer = collision.gameObject.transform.position.x > this.gameObject.transform.position.x;
             if (moveFloor)
             {
                 collision.gameObject.transform.position = newLocation;
+                bool wasReversed = collision.gameObject.transform.localScale.x < 0;
+                if ((rightOfDestoryer && wasReversed) || (!rightOfDestoryer && !wasReversed))
+                {
+                 //   collision.gameObject.transform.localScale = new Vector3(collision.gameObject.transform.localScale.x * (-1), collision.gameObject.transform.localScale.y, collision.gameObject.transform.localScale.z);
+                }
                 topFloor = collision.gameObject;
             }
             else
             {
                 topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
+                //if (!rightOfDestoryer )topFloor.transform.localScale = new Vector3(topFloor.transform.localScale.x * (-1), topFloor.transform.localScale.y, topFloor.transform.localScale.z);
                 Destroy(collision.gameObject);
             }
             //p1.GetComponent<movement>().lastDestroyedHeight = collision.gameObject.transform.position.y;

@@ -27,7 +27,6 @@ public class PlayerKiller : MonoBehaviour
         {
             Debug.LogError("GAME OVER :_____________(");
             dead = true;
-            Destroy(collision.gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
         }
