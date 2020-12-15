@@ -49,7 +49,7 @@ public class Destroy : MonoBehaviour
             if (collision.gameObject.Equals(bgPiece))
             {
                 //Debug.Log("FORDOR WOOOHHOOOO IM HERE FUCK YESSSSSSSSSSSSSSSSSSSSS!!!!!");
-                float newBGY = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.bounds.size.y + bigStems[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+                float newBGY = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.bounds.size.y + bigStems[i].GetComponent<SpriteRenderer>().sprite.bounds.size.y - 1.5f;
                 float PPU = bigStems[i == 1 ? 0 : 1].GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
                 //Debug.Log("FORDOR " + i + " dude - " + newBGY);
                 //Debug.Log($"ymax {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMax}, height {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.height}, ymin {backgrounds[i].GetComponent<SpriteRenderer>().sprite.rect.yMin}, ");
