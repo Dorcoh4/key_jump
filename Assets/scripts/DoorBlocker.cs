@@ -22,9 +22,10 @@ public class DoorBlocker : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.y > 0)
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (rb != null && rb.velocity.y > 0)
         {
             if (!doorOpen)
             {
@@ -56,7 +57,7 @@ public class DoorBlocker : MonoBehaviour
         }
     }
 
-    protected void ActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    protected void ActivateKey(Collider2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         p1.keys.Remove(correctKey);
         doorOpen = true;
@@ -67,7 +68,7 @@ public class DoorBlocker : MonoBehaviour
         }
     }
 
-    protected virtual void DoActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    protected virtual void DoActivateKey(Collider2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * this.gameObject.GetComponent<bounce>().jumpFactor * (1 + ComboMeasure.Combo / 10));
     }

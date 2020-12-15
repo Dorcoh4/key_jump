@@ -23,7 +23,7 @@ public class Teleport : DoorBlocker
         }
     }
 
-    protected override void DoActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    protected override void DoActivateKey(Collider2D collision, movement p1, KeyPickup.KeyItem correctKey)
     {
         GameObject lerpee = collision.gameObject;
         var newYLocation = lerpee.transform.position.y + (33 * Random.Range(0.6f, 1f));

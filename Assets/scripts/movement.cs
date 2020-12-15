@@ -72,20 +72,20 @@ public class movement : MonoBehaviour
         Canvas.GetComponent<Text>().text = newText;
         //Canvas.GetComponent<Text>().text = "blue keys:" + blueCount + "\nred keys:" + redCount+ "\nyellow keys:"+ yellowCount + "\nyour mom: 69";
         moveInput = Input.GetAxis("Horizontal");
-        //p1.velocity = new Vector2(moveInput * speed * 20, p1.velocity.y);
+        p1.velocity = new Vector2(moveInput * speed, p1.velocity.y);
         // GOD MODE   
         moveInput = Input.GetAxis("Vertical");
         if (moveInput > 0) p1.velocity = new Vector2(p1.velocity.x, moveInput * speed*20);
-        if (timer == 0)
-        {
-            if (!Input.touchSupported && moveInput != 0)
-            {
-                //Vector3 direction = moveInput >= 0 ? Vector3.right : Vector3.left;
-                //p1.AddForce((direction * 2.2f), ForceMode2D.Impulse);
-            }
+        //if (timer == 0)
+        //{
+        //    if (!Input.touchSupported && moveInput != 0)
+        //    {
+        //        //Vector3 direction = moveInput >= 0 ? Vector3.right : Vector3.left;
+        //        //p1.AddForce((direction * 2.2f), ForceMode2D.Impulse);
+        //    }
 
-        }
-        int boostTime = 2;
+        //}
+        //int boostTime = 2;
 
         //Debug.Log($"touches: {Input.touches.Length} touchCOunt: {Input.touchCount} touchsuported: {Input.touchSupported} ");
         if (Input.touches.Length > 0) //&& timer <= boostTime)
@@ -127,7 +127,7 @@ public class movement : MonoBehaviour
         }
         else
         {
-            p1.velocity = new Vector2(0, p1.velocity.y);
+            //p1.velocity = new Vector2(0, p1.velocity.y);
         }
 
         //}

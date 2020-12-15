@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerKiller : MonoBehaviour
 {
     // Start is called before the first frame update
+    private bool dead = false;
     void Start()
     {
         
@@ -22,9 +23,10 @@ public class PlayerKiller : MonoBehaviour
 
         // death
 
-        if (collision.gameObject.GetComponent<movement>() != null)
+        if (collision.gameObject.GetComponent<movement>() != null && ! dead)
         {
             Debug.LogError("GAME OVER :_____________(");
+            dead = true;
             Destroy(collision.gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;

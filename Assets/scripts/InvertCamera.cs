@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InvertCamera : DoorBlocker
 {
+    private AngularLerper angelaMerkel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +15,15 @@ public class InvertCamera : DoorBlocker
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    protected override void DoActivateKey(Collision2D collision, movement p1, KeyPickup.KeyItem correctKey)
-    {
-        for (int i = 0; i < p1.transform.childCount - 1; i++)
+        if (angelaMerkel != null)
         {
-           p1.MainCamera.transform.Rotate(0, 0, 180);
-            //Debug.Log(t.transform.name);
+           angelaMerkel = angelaMerkel.lerpUpdate();
         }
+    }
+    protected override void DoActivateKey(Collider2D collision, movement p1, KeyPickup.KeyItem correctKey)
+    {
+           //p1.MainCamera.transform.Rotate(0, 0, 180);
+           //Debug.Log(t.transform.name);
+            angelaMerkel = new AngularLerper(p1.MainCamera, 30);
     }
 }

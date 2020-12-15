@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bounce : MonoBehaviour
 {
-    public AudioClip sound;
     public float jumpFactor;
     private readonly float DEFAULT_JUMP = 1000;
     private int cnt = 0;
