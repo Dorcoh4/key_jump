@@ -13,6 +13,7 @@ public class Destroy : MonoBehaviour
     public GameObject[] keyPrefabs;
     public GameObject[] backgrounds;
     public GameObject[] bigStems;
+    public GameObject playerKiller;
     private List<Vector2> previousList = new List<Vector2>();
     public static readonly float CREATION_RANGE = 4.5f;
     // Start is called before the first frame update
@@ -95,23 +96,28 @@ public class Destroy : MonoBehaviour
             //{
             //    moveFloor = true;
             //}
-            bool rightOfDestoryer = collision.gameObject.transform.position.x > this.gameObject.transform.position.x;
-            if (moveFloor)
+            
+            //if (moveFloor)
+            //{
+            //    collision.gameObject.transform.position = newLocation;
+            //    bool wasReversed = collision.gameObject.transform.localScale.x < 0;
+            //    if ((rightOfDestoryer && wasReversed) || (!rightOfDestoryer && !wasReversed))
+            //    {
+            //        collision.gameObject.transform.localScale = new Vector3(collision.gameObject.transform.localScale.x * (-1), collision.gameObject.transform.localScale.y, collision.gameObject.transform.localScale.z);
+            //    }
+            //    topFloor = collision.gameObject;
+            //}
+            
+            
+            topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
+            bool rightOfDestoryer = topFloor.transform.position.x > -1.06f;
+            bool wasReversed = collision.gameObject.transform.localScale.x < 0;
+            if (!rightOfDestoryer)
             {
-                collision.gameObject.transform.position = newLocation;
-                bool wasReversed = collision.gameObject.transform.localScale.x < 0;
-                if ((rightOfDestoryer && wasReversed) || (!rightOfDestoryer && !wasReversed))
-                {
-                 //   collision.gameObject.transform.localScale = new Vector3(collision.gameObject.transform.localScale.x * (-1), collision.gameObject.transform.localScale.y, collision.gameObject.transform.localScale.z);
-                }
-                topFloor = collision.gameObject;
+                topFloor.transform.localScale = new Vector3(topFloor.transform.localScale.x * (-1), topFloor.transform.localScale.y, topFloor.transform.localScale.z);
             }
-            else
-            {
-                topFloor = (GameObject)Instantiate(prefabToCreate, newLocation, Quaternion.identity);
-                //if (!rightOfDestoryer )topFloor.transform.localScale = new Vector3(topFloor.transform.localScale.x * (-1), topFloor.transform.localScale.y, topFloor.transform.localScale.z);
-                Destroy(collision.gameObject);
-            }
+            Destroy(collision.gameObject);
+            
             //p1.GetComponent<movement>().lastDestroyedHeight = collision.gameObject.transform.position.y;
         }
 

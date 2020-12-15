@@ -8419,6 +8419,10 @@ PrefabInstance:
       propertyPath: bigStems.Array.data[1]
       value: 
       objectReference: {fileID: 1642508183}
+    - target: {fileID: 5851547811752230957, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: playerKiller
+      value: 
+      objectReference: {fileID: 427010548}
     - target: {fileID: 5851547811776445524, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.7
