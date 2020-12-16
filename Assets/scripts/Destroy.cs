@@ -77,10 +77,10 @@ public class Destroy : MonoBehaviour
             //var newYLocation = p1.transform.position.y + (15);
             //if (floor != null && newYLocation - floor.transform.position.y < 7 )
             //{
-            var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.6f, 1f));
+            var newYLocation = topFloor.transform.position.y + (4 * Random.Range(0.9f, 1.5f));
             //}
 
-            var newLocation = new Vector2(Random.Range(-9.0f, 9.0f), newYLocation);
+            var newLocation = new Vector2(Random.Range(-8.0f, 8.0f), newYLocation);
 
             bool moveFloor = false;
 

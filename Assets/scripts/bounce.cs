@@ -29,17 +29,21 @@ public class bounce : MonoBehaviour
         Rigidbody2D rigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
         if ( rigidBody != null && rigidBody.velocity.y <= 0)
         {
+
+            if (collision.gameObject.GetComponent<movement>() != null)
+            {
+                Animator animator = collision.gameObject.GetComponentInChildren<Animator>();
+                bool hasVelocity = rigidBody.velocity.x != 0;
+                //GetComponent<AudioSource>().Play();
+                animator.SetBool("jumpSide", hasVelocity);
+                animator.SetBool("jump", !hasVelocity);
+                animator.SetBool("fall", false);
+            }
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
             rigidBody.AddForce(Vector3.up * jumpFactor);
 
             //Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
-            if (collision.gameObject.GetComponent<movement>() != null)
-            {
-                Animator animator = collision.gameObject.GetComponentInChildren<Animator>();
-                //GetComponent<AudioSource>().Play();
-                animator.SetBool("jump", true);
-                animator.SetBool("fall", false);
-            }
+            
         }
         else
         {

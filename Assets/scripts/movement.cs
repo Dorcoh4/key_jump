@@ -52,6 +52,7 @@ public class movement : MonoBehaviour
         {
             animator = GetComponentInChildren<Animator>();
             animator.SetBool("jump", false);
+            animator.SetBool("jumpSide", false);
             animator.SetBool("fall", true);
         }
         
@@ -210,7 +211,14 @@ public class movement : MonoBehaviour
     private void LateUpdate()
     {
         // camera entangle
-        
+        if (p1.velocity.x < 0)
+        {
+            this.transform.localScale = new Vector3((-1) * Mathf.Abs( transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (p1.velocity.x > 0)
+        {
+            this.transform.localScale = new Vector3(Mathf.Abs( transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
        
         Camera mainCamera = MainCamera.GetComponent<Camera>();
         if (p1.position.y + 6 >= lastDestroyedHeight)
