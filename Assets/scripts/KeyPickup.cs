@@ -13,9 +13,11 @@ public class KeyPickup : MonoBehaviour
     public string ColorString;
     public class KeyItem{
         public KeyColor Color { get; set; }
-        public KeyItem(KeyColor color)
+        public Sprite sprite;
+        public KeyItem(KeyColor color, Sprite sprite)
         {
             Color = color;
+            this.sprite = sprite;
         }
     }
 
@@ -40,7 +42,7 @@ public class KeyPickup : MonoBehaviour
         movement p1 = collsion.GetComponent<movement>();
         if (p1 != null)
         {
-            p1.keys.Add(new KeyItem(keyColor));
+            p1.keys.Add(new KeyItem(keyColor, gameObject.GetComponent<SpriteRenderer>().sprite));
             //Debug.Log("got a key!!!");
             Destroy(gameObject);
         }

@@ -21,7 +21,7 @@ public class movement : MonoBehaviour
 
     public Rigidbody2D p1;
     public float moveInput;
-    public static readonly int maxKeys = 4;
+    public static readonly int maxKeys = 3;
     public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(maxKeys);
     public GameObject Canvas;
     private int timer = 0;
@@ -35,6 +35,7 @@ public class movement : MonoBehaviour
     public float lastDestroyedHeight;
     public int blockedRight;
     public int blockedLeft;
+    public Sprite EmptyImage;
     void Start()
     {
         speed = 10;
@@ -149,26 +150,33 @@ public class movement : MonoBehaviour
 
         // keys cheat
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.RED));
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.BLUE));
-        }
-        if (Input.GetKey(KeyCode.R))
-        {
-            this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.YELLOW));
-        }
+        //if (Input.GetKey(KeyCode.E))
+        //{
+        //    this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.RED));
+        //}
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.BLUE));
+        //}
+        //if (Input.GetKey(KeyCode.R))
+        //{
+        //    this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.YELLOW));
+        //}
     }
     private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int[] keyCounts)
     {
         keyCounts = new int[ColorUtils.ColorList.Length];
-        for (int i = 0; i < keys.Count; i++)
+        int i = 0;
+        for (; i < keys.Count; i++)
         {
             var key = keys[i];
             keyCounts[ColorUtils.getKey(key.Color)]++;
+            GetComponentsInChildren<Image>()[i].sprite = key.sprite;
+            
+        }
+        for (; i < maxKeys; i++)
+        {
+            GetComponentsInChildren<Image>()[i].sprite = EmptyImage;
         }
     }
 

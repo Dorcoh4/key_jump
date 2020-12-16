@@ -8556,6 +8556,10 @@ PrefabInstance:
       propertyPath: PlayerKiller
       value: 
       objectReference: {fileID: 427010548}
+    - target: {fileID: 5851547811063067451, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
+      propertyPath: EmptyImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c1c5cce376888246a773a9b1b693d85, type: 3}
     - target: {fileID: 5851547811752230947, guid: 74313e97a27f1ef4ca66e28ee842b44f, type: 3}
       propertyPath: m_Layer
       value: 11
