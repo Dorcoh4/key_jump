@@ -8,6 +8,7 @@ public class bounce : MonoBehaviour
     private readonly float DEFAULT_JUMP = 1000;
     private int cnt = 0;
     // Start is called before the first frame update
+    public Animator animator;
     void Start()
     {
         jumpFactor = jumpFactor != 0 ? jumpFactor : DEFAULT_JUMP;
@@ -34,8 +35,10 @@ public class bounce : MonoBehaviour
             //Debug.Log("bboooouuuunnnnnccccccccceeeeee (::) " + cnt);
             if (collision.gameObject.GetComponent<movement>() != null)
             {
+                Animator animator = collision.gameObject.GetComponentInChildren<Animator>();
                 //GetComponent<AudioSource>().Play();
-
+                animator.SetBool("jump", true);
+                animator.SetBool("fall", false);
             }
         }
         else

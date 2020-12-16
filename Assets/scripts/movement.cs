@@ -22,6 +22,7 @@ public class movement : MonoBehaviour
     public Rigidbody2D p1;
     public float moveInput;
     public static readonly int maxKeys = 3;
+    public Animator animator;
     public FixedSizedQueue<KeyPickup.KeyItem> keys = new FixedSizedQueue<KeyPickup.KeyItem>(maxKeys);
     public GameObject Canvas;
     private int timer = 0;
@@ -47,6 +48,13 @@ public class movement : MonoBehaviour
     void FixedUpdate()
     {
 
+        if (p1.velocity.y < 0)
+        {
+            animator = GetComponentInChildren<Animator>();
+            animator.SetBool("jump", false);
+            animator.SetBool("fall", true);
+        }
+        
 
         Camera mainCamera = MainCamera.GetComponent<Camera>();
         //if (Math.Abs( p1.velocity.x) < 2f)
@@ -163,20 +171,39 @@ public class movement : MonoBehaviour
         //    this.keys.Add(new KeyPickup.KeyItem(KeyPickup.KeyColor.YELLOW));
         //}
     }
+    private static HashSet<Image> scaledImages = new HashSet<Image>();
     private void CountKeys(FixedSizedQueue<KeyPickup.KeyItem> keys, out int[] keyCounts)
     {
         keyCounts = new int[ColorUtils.ColorList.Length];
         int i = 0;
+        float sizeFactor = 1.5f;
+        int potatoSpin = 235;
         for (; i < keys.Count; i++)
         {
             var key = keys[i];
             keyCounts[ColorUtils.getKey(key.Color)]++;
-            GetComponentsInChildren<Image>()[i].sprite = key.sprite;
+            Image image = GetComponentsInChildren<Image>()[i];
+            image.sprite = key.sprite;
+            if (!scaledImages.Contains(image))
+            {
+                image.transform.localScale = image.transform.localScale = new Vector3(image.transform.localScale.x * sizeFactor, image.transform.localScale.y * sizeFactor, image.transform.localScale.z * sizeFactor);
+                image.transform.Rotate(0, 0, potatoSpin);
+                scaledImages.Add(image);
+            }
+            
             
         }
         for (; i < maxKeys; i++)
         {
-            GetComponentsInChildren<Image>()[i].sprite = EmptyImage;
+            Image image = GetComponentsInChildren<Image>()[i];
+            image.sprite = EmptyImage;
+            if (scaledImages.Contains(image))
+            {
+                image.transform.localScale = image.transform.localScale = new Vector3(image.transform.localScale.x / sizeFactor, image.transform.localScale.y / sizeFactor, image.transform.localScale.z / sizeFactor);
+                image.transform.Rotate(0, 0, -potatoSpin);
+                scaledImages.Remove(image);
+            }
+                
         }
     }
 
